@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LapTrinhWeb.Models.Book>
+
+@{
+    ViewBag.Title = "ListBookModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Book</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table cellpadding = "10" border="1">
+    <thread>
+       <tr>
+           <th>
+               Title
+           </th>
+           <th>
+               Author
+           </th>
+           <th>
+               Image Cover
+           </th>
+           <th>
+               Edit
+           </th>
+           <th>
+               Delete
+           </th>
+        </tr>
+    </thread>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+          <img src="@item.ImageCover" width="95" title="cover"/>
+        </td>
+        <td>
+           <a href="/Book/EditBook/@item.Id" title="Edit Book">Edit</a>
+        </td>
+        <td>
+            <a href="/Book/Delete/@item.Id" title="Delete Book">Edit</a>
+        </td>
+    </tr>
+}
+
+</table>
